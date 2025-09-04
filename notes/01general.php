@@ -86,3 +86,34 @@ $fullName = $firstName . " " . $lastName;
   <h2><?= 'Hi there, my name is ' . $fullName . '.'?></h2>
   <!-- Variable Interpolation (available when using double quotes) -->
   <?= "Hello, $fullName, this is variable interpolation." ?>
+
+
+<?php
+//! Type Casting & Juggling 
+$number1 = 5;
+$number2 = 10;
+$number3 = '20';
+$fruit = "apple";
+$bool1 = true;
+$bool2 = false;
+$null = null;
+
+//* Implicit Conversion:
+$result = $number1 + $number2; // Int
+$result = $number1 + $number3; // Int (string to int conversion)
+
+$result = $number3 + $number3; // Still an int! 
+
+//? To concatenate integers / numbers
+$result = $number1 . $number2; // String (int to string);
+// $result = $fruit + $number2; //! Error!
+$result = $number1 + $bool1; // Int (6), true is converted to a 1 (false is 0).
+$result = $number1 + null; // Int (5), null is 0.
+
+//* Explicit Conversion
+$result = (string) $number1;
+$result = (int) $number3;
+$result = (bool) $number1; // Truthy value, so true.
+
+var_dump($result);
+
