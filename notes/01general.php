@@ -73,3 +73,16 @@ echo '<br/>';
 ?>
 
 <h1><?= $title ?></h1>
+
+<?php
+$firstName = "Matt";
+$lastName = "Doe";
+
+//* Concatenation is done with a period '.' in PHP, not a plus sign:
+$fullName = $firstName . " " . $lastName;
+  ?>
+
+  <h2>String Concatenation: <?= $fullName ?></h2>
+  <h2><?= 'Hi there, my name is ' . $fullName . '.'?></h2>
+  <!-- Variable Interpolation (available when using double quotes) -->
+  <?= "Hello, $fullName, this is variable interpolation." ?>
