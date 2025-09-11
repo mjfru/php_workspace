@@ -45,6 +45,43 @@ $output = number_format(1234567.191234, 2, '.', ',');
 
 ?>
 
+
+//! String Functions
+<?php 
+$string_output = null;
+$string = 'Hello, World!';
+
+// strlen
+$string_output = strlen($string);
+
+// str_word_count
+$string_output = str_word_count($string);
+
+// strpos
+$string_output = strpos($string, 'World');
+
+// Get specific character by index:
+$string_output = $string[4];
+
+// substr
+$string_output = substr($string, 7, 5);
+
+// str_replace
+$string_output = str_replace('World', 'Earth', $string);
+
+//strtolower
+$string_output = strtolower($string);
+
+// strtoupper
+$string_output = strtoupper($string);
+
+// ucwords
+$string_output = ucwords($string);
+
+$string_output = trim('  Hello, World!  ')
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,7 +101,15 @@ $output = number_format(1234567.191234, 2, '.', ',');
   <div class="container mx-auto p-4 mt-4">
     <div class="bg-white rounded-lg shadow-md p-6 mt-6">
       <p class="text-xl">
+        Numerical Outputs:
         <?= $output ?>
+      </p>
+
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6 mt-6">
+      <p class="text-xl">
+        String Outputs:
+        <?= $string_output ?>
       </p>
     </div>
   </div>
