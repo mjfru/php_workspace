@@ -1,4 +1,4 @@
-<?php 
+<?php
 //! Dates & Times in PHP
 /*
 - Y - The year
