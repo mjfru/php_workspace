@@ -1,3 +1,5 @@
+//! Variable Challenges
+
 <!-- 
 - Add a variable called `$title` and set it to the title of the blog post and part of the title of the page.
 - Add a variable called `$author` and set it to the author of the blog post.
