@@ -116,3 +116,42 @@ echo $counter() . '<br>';
 echo $counter() . '<br>';
 
 ?>
+
+<!-- Callback Functions -->
+<?php
+$numbers = [1, 2, 3, 4, 5];
+
+$square = function ($number) {
+  return $number * $number;
+};
+
+$squaredNumbers = array_map($square, $numbers);
+
+
+print_r($squaredNumbers);
+
+function applyCallback($callback, $value)
+{
+  return $callback($value);
+};
+
+$double = function ($number) {
+  return $number * 2;
+};
+
+$result = applyCallback($double, 5);
+
+echo $result;
+?>
+
+<!-- Arrow Functions -->
+<?php
+
+// Syntax a little different from JS and meant to be one-liners:
+$add = fn($a, $b) => $a + $b;
+
+echo $add(1, 2);
+
+$numbers = [1, 2, 3, 4, 5];
+$squaredNumbers = array_map(fn($number) => $number * $number, $numbers);
+?>
