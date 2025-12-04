@@ -1,4 +1,4 @@
 <?php
 require '../helpers.php';
-require basePath('views/home.view.php');
+loadView('home');
 // php -S localhost:8000 -t public
