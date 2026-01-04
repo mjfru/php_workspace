@@ -1,24 +1,24 @@
 <?php
 require '../helpers.php';
 require basePath('Database.php');
-$config = require basePath('config/db.php');
+require basePath('Router.php');
 
-$db = new Database($config);
+// Instantiating the router:
+$router = new Router();
+
+// Getting routes:
+$routes = require basePath('routes.php');
 // loadView('home');
-
-
 
 // inspect($uri);
 // inspect($method);
 
-require basePath('Router.php');
-$router = new Router();
-$routes = require basePath('routes.php');
-
+// Get current URI & HTTP method:
 $uri = $_SERVER['REQUEST_URI'];
 // inspectAndDie($uri);
 $method = $_SERVER['REQUEST_METHOD'];
 
+// Route the request
 $router->route($uri, $method);
 
 // php -S localhost:8000 -t public
