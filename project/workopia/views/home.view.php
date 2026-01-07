@@ -3,8 +3,6 @@
 <?= loadPartial('showcase-search') ?>
 <?= loadPartial('top-banner') ?>
 
-<!-- <?php inspect($listings); ?> -->
-
 <!-- Job Listings -->
 <section>
   <div class="container mx-auto p-4 mt-4">
@@ -13,7 +11,7 @@
 
       <?php foreach ($listings as $listing) : ?>
 
-        <!-- Job Listing 1: Software Engineer -->
+
         <div class="rounded-lg shadow-md bg-white">
           <div class="p-4">
             <h2 class="text-xl font-semibold"><?= $listing->title ?></h2>
