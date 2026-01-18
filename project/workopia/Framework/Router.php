@@ -4,7 +4,6 @@ namespace Framework;
 
 use App\Controllers\ErrorController;
 
-
 class Router
 {
   protected $routes = [];
@@ -79,7 +78,7 @@ class Router
       $match = true;
 
       // Check if the number of segments matches:
-      if (count($uriSegments) === count($routeSegments) ** strtoupper($route['method'] === $requestMethod)) {
+      if (count($uriSegments) === count($routeSegments) && strtoupper($route['method'] === $requestMethod)) {
         $params = [];
         $match = true;
 
@@ -108,17 +107,6 @@ class Router
           return;
         }
       }
-
-      // if ($route['uri'] === $uri && $route['method'] === $method) {
-      //   // Extract controller & controller method
-      //   $controller = 'App\\Controllers\\' . $route['controller'];
-      //   $controllerMethod = $route['controllerMethod'];
-
-      //   // Instantiate the controller and call the method
-      //   $controllerInstance = new $controller();
-      //   $controllerInstance->$controllerMethod();
-      //   return;
-      // }
     }
     ErrorController::notFound();
   }

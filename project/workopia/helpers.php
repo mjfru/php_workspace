@@ -18,7 +18,7 @@ function basePath($path = '')
  * @param string $name
  * @return void
  */
-function loadView($name, $data = [] )
+function loadView($name, $data = [])
 {
   $viewPath = basePath("App/views/{$name}.view.php");
 
@@ -80,6 +80,18 @@ function inspectAndDie($value)
  * @return string Formatted Salary
  */
 
-function formatSalary($salary) {
+function formatSalary($salary)
+{
   return '$' . number_format(floatval($salary));
+}
+
+/**
+ * Sanitize data
+ * 
+ * @param string $dirty
+ * @return string
+ */
+function sanitize($dirty)
+{
+  return filter_var(trim($dirty), FILTER_SANITIZE_SPECIAL_CHARS);
 }
