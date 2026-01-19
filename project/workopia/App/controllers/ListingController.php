@@ -58,7 +58,7 @@ class ListingController
   {
     $allowedFields = ['title', 'description', 'salary', 'tags', 'company', 'address', 'city', 'state', 'phone', 'email', 'requirements', 'benefits'];
 
-    $newListingdData = array_intersect_key($_POST, array_flip($allowedFields));
+    $newListingData = array_intersect_key($_POST, array_flip($allowedFields));
 
     $newListingData['user_id'] = 1;
 
@@ -68,11 +68,20 @@ class ListingController
 
     $errors = [];
 
-    foreach($requiredFields as $field) {
-      if(empty($newListingData[$field]) || !Validation::string($newListingData[$field])) {
+    foreach ($requiredFields as $field) {
+      if (empty($newListingData[$field]) || !Validation::string($newListingData[$field])) {
         $errors[$field] = ucfirst($field) . ' is required.';
       }
     }
-    inspectAndDie($errors);
+    // inspectAndDie($errors);
+    if (!empty($errors)) {
+      // Reload the view with errors
+      loadView('listings/create', [
+        'errors' => $errors,
+        'listing' => $newListingData,
+      ]);
+    } else {
+      echo 'Success!';
+    }
   }
 }
