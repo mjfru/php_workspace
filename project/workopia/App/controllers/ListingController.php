@@ -64,6 +64,15 @@ class ListingController
 
     $newListingData = array_map('sanitize', $newListingData);
 
-    inspectAndDie($newListingdData);
+    $requiredFields = ['title', 'description', 'email', 'city', 'state'];
+
+    $errors = [];
+
+    foreach($requiredFields as $field) {
+      if(empty($newListingData[$field]) || !Validation::string($newListingData[$field])) {
+        $errors[$field] = ucfirst($field) . ' is required.';
+      }
+    }
+    inspectAndDie($errors);
   }
 }
