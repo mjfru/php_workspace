@@ -81,7 +81,15 @@ class ListingController
         'listing' => $newListingData,
       ]);
     } else {
-      echo 'Success!';
+      // echo 'Success!';
+      $fields = [];
+
+      foreach($newListingData as $field => $value) {
+        $fields[] = $field;
+      }
+
+      $fields = implode(', ', $fields);
+
     }
   }
 }
