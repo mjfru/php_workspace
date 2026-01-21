@@ -64,7 +64,7 @@ class ListingController
 
     $newListingData = array_map('sanitize', $newListingData);
 
-    $requiredFields = ['title', 'description', 'email', 'city', 'state'];
+    $requiredFields = ['title', 'description', 'salary', 'email', 'city', 'state',];
 
     $errors = [];
 
