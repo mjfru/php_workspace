@@ -173,4 +173,56 @@ class ListingController
       'listing' => $listing
     ]);
   }
+
+  /**
+   * Update a listing
+   * 
+   * @param array $params
+   * @return void
+   */
+  public function update($params)
+  {
+    $id = $params['id'] ?? "";
+
+    $params = [
+      'id' => $id,
+    ];
+
+    $listing = $this->db->query('SELECT * FROM listings WHERE id = :id', $params)->fetch();
+
+    // Check if listing exists:
+    if (!$listing) {
+      ErrorController::notFound('Listing not found.');
+      return;
+    }
+
+    $allowedFields = ['title', 'description', 'salary', 'tags', 'company', 'address', 'city', 'state', 'phone', 'email', 'requirements', 'benefits'];
+
+    $updatedValues = array_intersect_key($_POST, array_flip($allowedFields));
+
+    $updatedValues = array_map('sanitize', $updatedValues);
+
+    $requiredFields = ['title', 'description', 'salary', 'email', 'city', 'state'];
+
+    $errors = [];
+
+    foreach ($requiredFields as $field) {
+      if (empty($updatedValues[$field]) || !Validation::string($updatedValues[$field])) {
+        $errors[$field] = ucfirst($field) . ' is required';
+      }
+    }
+
+    if (!empty($errors)) {
+      loadView('listing/edit', [
+        'listing' => $listing,
+        'errors' => $errors,
+      ]);
+      exit;
+    } else {
+      // Submit to DB:
+      inspectAndDie('Success');
+    }
+
+    inspectAndDie($errors);
+  }
 }
