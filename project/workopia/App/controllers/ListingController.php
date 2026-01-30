@@ -222,7 +222,7 @@ class ListingController
       // Submit to DB:
       // inspectAndDie('Success');
       $updateFields = [];
-      foreach(array_keys($updateValues) as $field) {
+      foreach (array_keys($updateValues) as $field) {
         // inspect($field);
         $updateFields[] = "{$field} = :{$field}";
       }
@@ -230,7 +230,12 @@ class ListingController
       $updateFields = implode(', ', $updateFields);
       // inspectAndDie($updateFields);
       $updateQuery = "UPDATE listings SET $updateFields WHERE id = :id";
-      inspectAndDie($updateQuery);
+
+      $updateValues['id'] = $id;
+      $this->db->query($updateQuery, $updateValues);
+      $_SESSION['success_message'] = "Listing Updated!";
+      redirect('/listings/' . $id);
+      // inspectAndDie($updateQuery);
     }
 
     // inspectAndDie($errors);
